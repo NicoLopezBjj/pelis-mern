@@ -1,0 +1,55 @@
+[
+    {
+    "nombreHero":"Venom",
+    "imagenHero":"https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/CD95B5409EA8B4987A467BADB3E0925FFFBB67665D18F8DE67E9E76967EBAE16/scale?width=1920&format=jpeg",
+    "trailerHero":"https://www.youtube.com/embed/u9Mv98Gr5pY?autoplay=1&mute=1&loop=1",
+    "descripcionHero":"A failed reporter is bonded to an alien entity, one of many symbiotes who have invaded Earth. But the being takes a liking to Earth and decides to protect it.",
+    "fechaHero":"October 10, 2018", 
+    "id":"tt1270797"
+    }
+    ,
+    {
+    "nombreHero":"Guardians of the Galaxy Vol. 2",
+    "imagenHero":"https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/6173AE830B8DDAC16FD7689AD142E925FAE5E33C9B69B5000623E849EEE880B9/scale?width=1920&format=jpeg",
+    "trailerHero":"https://www.youtube.com/embed/dW1BIid8Osg?autoplay=1&mute=1&loop=1",
+    "descripcionHero":"The Guardians struggle to keep together as a team while dealing with their personal family issues, notably Star-Lord's encounter with his father the ambitious celestial being Ego.",
+    "fechaHero":"April 27, 2017",
+     "id":"tt3896198"
+     }
+     ,
+     {
+    "nombreHero":"DeadPool 2",
+    "imagenHero":"https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/F26FCF07DA33D4AE6E035EC8F9DF6A86898B41FB0544A387550E49BBF43EDA6A/scale?width=1920&format=jpeg",
+    "trailerHero":"https://www.youtube.com/embed/D86RtevtfrA?autoplay=1&mute=1&loop=1",
+    "descripcionHero":"Foul-mouthed mutant mercenary Wade Wilson (a.k.a. Deadpool) assembles a team of fellow mutant rogues to protect a young boy with supernatural abilities from the brutal, time-traveling cyborg Cable.",
+    "fechaHero":"May 17, 2018", 
+    "id":"tt5463162"
+    }
+    ,
+    {
+    "nombreHero":"Avengers: Endgame",
+    "imagenHero":"https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/DB176BD1488D7E4822256EF1778C124FC17388FC1E7F0F6D89B38AFF5FB001F6/scale?width=1920&aspectRatio=1.78&format=jpeg",
+    "trailerHero":"https://www.youtube.com/embed/TcMBFSGVi1c?autoplay=1&mute=1&loop=1",
+    "descripcionHero":"After the devastating events of Avengers: Infinity War (2018), the universe is in ruins. With the help of remaining allies, the Avengers assemble once more in order to reverse Thanos' actions and restore balance to the universe.",
+    "fechaHero":"april 24, 2019", 
+    "id":"tt4154796"
+    }
+    ,
+    {
+    "nombreHero":"Avatar: The Way of Water",
+    "imagenHero":"https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/F03BC1479FC8297A993EC05AFC0A386B5A7458C01075F655EFE25E85B9F668C1/scale?width=1920&aspectRatio=1.78&format=jpeg",
+    "trailerHero":"https://www.youtube.com/embed/MLp7-KB-xdk?autoplay=1&mute=1&loop=1",
+    "descripcionHero":"Jake Sully lives with his newfound family formed on the extrasolar moon Pandora. Once a familiar threat returns to finish what was previously started, Jake must work with Neytiri and the army of the Na'vi race to protect their home.",
+    "fechaHero":"December 14, 2022", 
+    "id":"tt1630029"
+    }
+    ,
+    {
+    "nombreHero":"Logan",
+    "imagenHero":"https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/A863D3455F8901C38D59AC184FE38C8ED85140D890A077E48DA0EBD464940FB6/scale?width=1920&aspectRatio=1.78&format=jpeg",
+    "trailerHero":"https://www.youtube.com/embed/Div0iP65aZo?autoplay=1&mute=1&loop=1",
+    "descripcionHero":"In a future where mutants are nearly extinct, an elderly and weary Logan leads a quiet life. But when Laura, a mutant child pursued by scientists, comes to him for help, he must get her to safety.",
+    "fechaHero":"March 2, 2017", 
+    "id":"tt3315342"
+    }
+    ]

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import tbaImg from "./tba.jpg" 
+import { Link } from "react-router-dom";
 import "./sketch.css"
 
 function ProxEstrenos(){
@@ -20,6 +20,10 @@ function ProxEstrenos(){
     "November",
     "December"]
 
+    const style = {
+        textDecoration:"none"
+    }
+
     useEffect(()=>{
         async function llamaProxEstrenos(){
             const options = {
@@ -37,14 +41,14 @@ function ProxEstrenos(){
 
             try{
                 const data = await axios.request(options)
-                console.log("Data API:", data)
-                console.log("Próximos Estrenos:", proxEstrenos)
+                //console.log("Data API:", data)
+                //console.log("Próximos Estrenos:", proxEstrenos)
                 setProxEstrenos(data.data.results)
             }catch(err){ console.error(err) }
         } 
         llamaProxEstrenos()
     },[])
-    console.log("Próximos Estrenos:", proxEstrenos)
+   // console.log("Próximos Estrenos:", proxEstrenos)
     return(
         <section class="px-5 mb-5">
             <div class="mb-5">
@@ -53,15 +57,18 @@ function ProxEstrenos(){
             <hr />
             <div class="d-flex flex-wrap">
                 {proxEstrenos.map((proxEstreno)=>{
-                    return <div class="movie mx-2 mb-4 p-4 position-relative" key={proxEstreno.id}>
-                        <img src={proxEstreno.primaryImage === null ? tbaImg : proxEstreno.primaryImage.url} alt="Movie IMG" class="mb-3" />
-                        <p class="movie-title mb-2">{proxEstreno.titleText.text.length<25 ? proxEstreno.titleText.text : proxEstreno.titleText.text.slice(0,15) + "..."}</p>
-                        <p class="movie-description m-0">{proxEstreno.runtime === null ? "???" : proxEstreno.runtime.seconds/60} min | <span className="text-uppercase">{proxEstreno.genres.genres[0].text}</span></p>
-                        <div class="estrenos-fecha d-flex align-items-center position-absolute">
-                            <p class="prox-background text-light"><i class="fa-solid fa-calendar-days p-2"></i></p> 
-                            <p class="prox-background text-light py-1 ps-3 pe-4">{proxEstreno.releaseDate === null ? "TBA" : months[proxEstreno.releaseDate.month] + " " + proxEstreno.releaseDate.day}</p>
-                        </div>
-                    </div>
+                    let movieLink = `/movie/${proxEstreno.id}`
+                    return <Link to={movieLink} style={style}>
+                            <div class="movie mx-2 mb-4 p-4 position-relative" key={proxEstreno.id}>
+                                <img src={proxEstreno.primaryImage === null ? "tba.jpg" : proxEstreno.primaryImage.url} alt="Movie IMG" class="mb-3" />
+                                <p class="movie-title mb-2">{proxEstreno.titleText.text.length<25 ? proxEstreno.titleText.text : proxEstreno.titleText.text.slice(0,15) + "..."}</p>
+                                <p class="movie-description m-0">{proxEstreno.runtime === null ? "???" : proxEstreno.runtime.seconds/60} min | <span className="text-uppercase">{proxEstreno.genres.genres[0].text}</span></p>
+                                <div class="estrenos-fecha d-flex align-items-center position-absolute">
+                                    <p class="prox-background text-light"><i class="fa-solid fa-calendar-days p-2"></i></p> 
+                                    <p class="prox-background text-light py-1 ps-3 pe-4">{proxEstreno.releaseDate === null ? "TBA" : months[proxEstreno.releaseDate.month] + " " + proxEstreno.releaseDate.day}</p>
+                                </div>
+                            </div>
+                        </Link>
                 })}
             </div>
         </section>

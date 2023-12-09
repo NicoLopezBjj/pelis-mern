@@ -71,6 +71,26 @@ p{
     color:white;
 }
 
+.movie1 img{
+    width:36em;
+    height:50em;
+}
+
+.movie1 h1{
+    font-size:5rem;
+    font-style:italic;
+    font-weight:bold;
+}
+
+.movie1 h2{
+    font-style:italic;
+    font-weight:lighter;
+}
+
+.movie1 h3, .movie1 h4, .movie1 h6{
+    font-weight:lighter;
+}
+
 .news-container img{
     width:26em;
 }
@@ -138,6 +158,14 @@ p{
     background-size:cover;
     background-position:center;
 }*/
+
+.red{
+    color:var(--red)
+}
+
+.red-hover{
+    color:var(--red-hover)
+}
 
 .logo{
     width:9em;
@@ -229,6 +257,15 @@ p{
     background-color:var(--red);
 }
 
+.movie1{
+    width:90%;
+    margin:0 auto;
+}
+
+.movie1-info{
+    width:60%;
+}
+
 .news-title{
     font-weight:lighter;
     font-size:1.1rem;
@@ -267,5 +304,24 @@ p{
 
 .ancho{
     width: 25rem;
+}
+
+.loading-animation{
+    animation-name: loading;
+    animation-duration: 10s; /* alargar duración */
+}
+
+@keyframes loading{
+    0% {opacity:1}
+    10% {opacity:0.5}
+    20% {opacity:1}
+    30% {opacity:0.5}
+    40% {opacity:1}
+    50% {opacity:0.5}
+    60% {opacity:1}
+    70% {opacity:0.5}
+    80% {opacity:1}
+    90% {opacity:0.5}
+    100% {opacity:1}
 }
 

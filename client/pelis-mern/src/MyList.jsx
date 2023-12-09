@@ -1,16 +1,12 @@
 import './sketch.css'
 
-function News(){
+function MyList(){
   
   return (
     <>
         <section class="news px-5">
             <h3 class="text-center text-uppercase text-light mb-5">News</h3>
             <div class="news-container d-flex flex-nowrap">
-                <div class="d-flex flex-column mx-3">
-                    <img src="cine.PNG" alt="News IMG" class="mb-3"/>
-                    <p class="news-title ms-1">Review of files in 3D format becoming more acceptable</p>
-                </div>
                 <div class="d-flex flex-column mx-3">
                     <img src="cine.PNG" alt="News IMG" class="mb-3"/>
                     <p class="news-title ms-1">Review of files in 3D format becoming more acceptable</p>
@@ -38,4 +34,4 @@ function News(){
   );
 }
 
-export default News;
+export default MyList;

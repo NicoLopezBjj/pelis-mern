@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import axios from 'axios'
-import {NavLink} from "react-router-dom"
+import {NavLink, Navigate, Outlet, redirect} from "react-router-dom"
 
 
 const SignUp = () => {
@@ -8,6 +8,7 @@ const SignUp = () => {
   const [name,setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  let [llav,setLlav]= useState(false)
 
   const datosName = (e) =>{
     setName(e.target.value)
@@ -30,13 +31,20 @@ const SignUp = () => {
    
     const userData = { name, email, password }
 
+    
     axios.post('http://localhost:3001/signup', userData)
-      .then(response => {
-        console.log(response.data.message)
+      .then(response => { 
+        if(response.data.message == 'Usuario creado exitosamente'){
+          setLlav("exitoso") }
       })
       .catch(error => {
-        console.log('Error al enviar la solicitud:', error)
+        if(error.response.data.message == 'El usuario ya existe'){
+          setLlav(true) }
       })
+  }
+  
+  if(llav == "exitoso"){
+    return <Navigate to="/signin"/>;
   }
 
   return (
@@ -46,9 +54,10 @@ const SignUp = () => {
         </div>
         <div className='d-flex flex-column ancho justify-content-start'>
             <h2 className='text-start'>Registro</h2>
+            {llav?<p>el usuario ya existe</p>:null}
             <form onSubmit={enviarDatos}>
                 <div className='d-flex flex-column'>
-                    <label className='p-2 text-start' htmlFor="email">Nombre y apellido:</label>
+                    <label className='p-2 text-start' htmlFor="email">Nombre de usuario:</label>
                     <input className='p-2 form-control' type="text" id="name"  value={name} onChange={datosName} required />
                 </div>
                 <div className='d-flex flex-column'>

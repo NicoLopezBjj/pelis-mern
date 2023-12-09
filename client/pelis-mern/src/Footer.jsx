@@ -7,7 +7,7 @@ function Footer(){
     <>
         <footer class="py-5 d-flex flex-column justify-content-evenly">
             <div class="footer-content d-flex justify-content-between">
-                <img src="logo.png" alt="Movies Hub" class="logo ml-auto"/>
+                <img src="/logo.png" alt="Movies Hub" class="logo ml-auto"/>
              <NavBar></NavBar>
                 <div class="social-media d-flex align-items-center maxIcon">
                     <a href="#facebook"><i class="bi bi-facebook p-2"></i></a>

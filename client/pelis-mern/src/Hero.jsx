@@ -3,48 +3,45 @@ import React from 'react';
 import './sketch.css'
 import Header from './Header';
 
-let key = true;
-function Hero({newArray,setIdTrailer,trailer,setTrailer}){
-    let [num, setNum]=useState(1)
-    let array = [0,1,2,3,4,5]
+const functionSlide = async(setSlide,slide)=>{
+    await new Promise(() => setTimeout(()=>{
+       setSlide(slide+1)
+    }, 6000));
+} 
+
+function Hero({dataSlide}){
+    const [trailer,setTrailer]=useState("")
+    let [key,setKey]=useState(true)
+    let [num, setNum]=useState(0)
     let [hover, setHover] = useState(true)
     let [viewTrailer,setViewTrailer]=useState(false)
-    const months = [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December"
-      ];
+    let [slide,setSlide]=useState(0)
 
+    useEffect(()=>{
+            if (key && num < 6){
+                setNum(num+1)
+            }else{
+                setNum(1)
+            }
+        
+    },[slide])
+
+    if (key){
+        functionSlide(setSlide,slide)
+    }
+   
     const changeMovie=async (event)=>//cambio de numero: setNum es la más importante!! renderiza todo lo que contenga el valor del index elegido
         {
-        key = false
+        setKey(false)
         const number =Number(event.target.textContent) 
         setNum(number)
         setViewTrailer(false)
     };
 
-    const slide = async()=>{//slide cambia cada 6s
-        if(num == array[num]){
-            await new Promise(resolve => setTimeout(resolve, 6000));
-
-            if(key){
-                setNum(num+1)
-            }
-        
-        }
-    }; slide()
+   
         
     const changeMovieMinus = ()=>{//bajar de numero -flecha izquierda del slide <-
-        key = false
+        setKey(false)
         if(num != 1){
             setNum(num-1)
             setViewTrailer(false)
@@ -52,7 +49,7 @@ function Hero({newArray,setIdTrailer,trailer,setTrailer}){
     };
 
     const changeMoviePlus = ()=>{//subir de numero -flecha derecha del slide ->
-        key = false
+        setKey(false)
         if (num != 6){
             setNum(num+1)
             setViewTrailer(false)
@@ -67,18 +64,18 @@ function Hero({newArray,setIdTrailer,trailer,setTrailer}){
        setHover(true)
     };
 
-    const searchTrailer=(e)=>{//apertura y busqueda del trailers
-        key=false
-        setIdTrailer(e.target.id)
+    const playTrailer=(e)=>{//apertura y busqueda del trailers
+        setKey(false)
+        let valor = e.target.id
+        setTrailer(valor)
         setViewTrailer(true)
     }
     const closeModal=()=>{//cierre del trailer
         setViewTrailer(false)
         setTrailer("")
-        console.log("ingreso")
     }
     const background = {//propiedades para el background del hero
-        backgroundImage: newArray.length>0?`linear-gradient(to bottom, transparent 0%, #000000 95%),url(${newArray[num-1].primaryImage.url}) `:null,
+        backgroundImage: dataSlide.length>0?`linear-gradient(to bottom, transparent 0%, #000000 95%),url(${num==0?null:dataSlide[num-1].imagenHero}) `:null,
         backgroundSize:'cover',
         backgroundPosition:'center'
     };
@@ -91,36 +88,35 @@ function Hero({newArray,setIdTrailer,trailer,setTrailer}){
     
     return (
         <div>
-        {newArray.length > 0 ?
+        {dataSlide.length > 0 ?
             <section style={background}>
             {/* modal para trailer */}
             {
-            newArray.map((item, index) => (index+1 == num 
+            dataSlide.map((item, index) => (index+1 == num 
                 ? 
-                <div id="youtubeModal" style={{display:num == index + 1 &&viewTrailer ? "flex" : "none",width:"100%",height:"100%", position:"absolute", zIndex:"200",justifyContent:"center", alignItems:"center"}}>
+                <div key={item._id} style={{display:num == index + 1 && viewTrailer ? "flex" : "none",width:"100%",height:"100%", position:"absolute", zIndex:"200",justifyContent:"center", alignItems:"center"}}>
                         <button style={{color:"white",fontSize:"2rem",position:"absolute",top:"2.2em",right:"1.3em"}} onClick={closeModal}><i class="bi bi-x-lg"></i></button>
                         <iframe class="youtube-video" src={trailer} frameborder="0" allowfullscreen style={{width:"100vw",height:"100vh",alignSelf:"center"}}></iframe>
                 </div>
                 :
-                <p style={{display:num === index + 1 && viewTrailer?"flex":"none"}}>no hay trailer</p>
+                <p key={item.id} style={{display:num === index + 1 && viewTrailer?"flex":"none"}}>no hay trailer</p>
             ))}
             <Header></Header>
             <section className="hero position-relative px-5">
-                {newArray.map((item, index) => (index <= 5?
+                {dataSlide.map((item, index) => (index <= 5?
                     <>
-                    <div className="hero-movie" style={{display:num === index + 1?"block":"none"}} key={index}>
+                    <div className="hero-movie" style={{display:num === index + 1?"block":"none"}} key={item.id+"b"}>
                       <div className="hero-description d-flex align-items-center position-absolute">
                         <button className="btn px-4 colorButton ms-2">Book Now</button>
-                        <p>{months.map((e,index) =>
-                            index+1==Number(item.releaseDate.month)?e:null)} {item.releaseDate.day},{item.releaseDate.year}<br /> IMAX 3D</p>
+                        <p>{item.fechaHero}<br /> IMAX 3D</p>
                       </div>
                       <div className="hero-trailer position-absolute">
-                        <button  className="btn-trailer"><i id={item.id} onClick={searchTrailer} className="bi bi-play-fill"></i></button>
+                        <button  className="btn-trailer"><i id={item.trailerHero} onClick={playTrailer} className="bi bi-play-fill"></i></button>
                         <p >Watch Trailer</p>
                       </div>
                     </div>
                   
-                  <div className="hero-content">
+                  <div key={item.id+"c"} className="hero-content">
                     <div className="social-media position-absolute">
                       <a href="#facebook"><i className="bi bi-facebook"></i></a>
                       <a href="#twitter"><i className="bi bi-twitter-x"></i></a>
@@ -128,16 +124,16 @@ function Hero({newArray,setIdTrailer,trailer,setTrailer}){
                     </div>
                     { index==0?
                  
-                        <div className="hero-slide d-flex position-absolute">
-                        <button onClick={changeMovieMinus}><i className="bi bi-arrow-left"></i></button>
-                        <div className="hero-slide-page d-flex" > 
-                        {newArray.map((item, index) => (index <= 5?
+                        <div key={item.id+'d'} className="hero-slide d-flex position-absolute">
+                            <button onClick={changeMovieMinus}><i className="bi bi-arrow-left"></i></button>
+                            <div className="hero-slide-page d-flex" > 
+                            {dataSlide.map((item, index) => (index <= 5?
                                 <p
-                                key={index}
+                                key={item.id+"chil_d"}
                                 onMouseEnter={handleHover}
                                 onMouseLeave={handleUnhover}
                                 style={num === index + 1 && hover ? hoverAuto : null}
-                                id={index}
+                                id={item._id}
                                 onClick={changeMovie}
                                 >
                                 <a className="page-link" href="#">{index <= 5 ? `0${index + 1}` : null}</a>

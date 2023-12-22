@@ -1,16 +1,16 @@
-import './sketch.css'
+import '../../sketch.css'
 import Hero from './Hero';
-import MyList from './MyList';
-import Footer from './Footer'
+import MyList from '../Mylist/MyList';
+import Footer from '../../components/Footer'
 import Estrenos from './Estrenos';
 import ProxEstrenos from './ProxEstrenos';
 
-function Home({newArray, dataSlide}){
+function Home({ dataSlide}){
   
   return (
     <>
        
-        <Hero dataSlide={dataSlide}newArray={newArray} ></Hero>
+        <Hero dataSlide={dataSlide} ></Hero>
         <Estrenos></Estrenos>
         <ProxEstrenos></ProxEstrenos>
         <MyList></MyList>

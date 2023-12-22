@@ -1,5 +1,5 @@
-import Header from './Header';
-import './sketch.css'
+import Header from '../../components/Header';
+import '../../sketch.css'
 
 function NoPage(){
   

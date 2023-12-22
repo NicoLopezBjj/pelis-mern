@@ -1,5 +1,5 @@
 import NavBar from './NavBar';
-import './sketch.css'
+import '../sketch.css'
 
 function Footer(){
   

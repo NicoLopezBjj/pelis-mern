@@ -100,6 +100,11 @@ p{
     transition: color 0.5s;
 }
 
+.profile-selector img{
+    width:5em;
+    cursor:pointer;
+}
+
 /* Pseudoclases */
 
 .hoverEnlace:hover{
@@ -124,6 +129,10 @@ p{
     background-color: var(--red-hover) !important
 }
 
+.reverseColorButton:hover{
+    background-color: var(--red) !important
+}
+
 
 .social-media i:hover{
     color:var(--red)
@@ -143,6 +152,10 @@ p{
     box-shadow:0 0 7px #444444;
 }
 
+.styleTrailer:hover{
+    box-shadow:0 0 7px #444444;
+}
+
 .ver-mas:hover{
     color:var(--red-hover);
 }
@@ -151,6 +164,9 @@ p{
     color:var(--red);
 }
 
+.hoverModal:hover{
+    color:var(--red);
+}
 /* Clases */
 
 /*.background{
@@ -230,6 +246,12 @@ p{
     cursor: pointer;
     transition:box-shadow 0.5s;
 }
+.styleTrailer {
+    padding:0;
+    width:15em;
+    cursor:auto;
+    overflow:'hidden'
+}
 
 .movie-title{
     font-weight:bold;
@@ -284,12 +306,22 @@ p{
     right:4em;
 }
 
+.new-name-input{
+    background-color:#444444;
+}
+
 .sacarEnlace{
     text-decoration: none;
 }
 
 .colorButton{
     background-color: var(--red) !important;
+    color: white !important;
+    transition: background-color 0.5s !important;
+}
+
+.reverseColorButton{
+    background-color: var(--red-hover) !important;
     color: white !important;
     transition: background-color 0.5s !important;
 }

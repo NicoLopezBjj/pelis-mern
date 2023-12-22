@@ -1,4 +1,4 @@
-import './sketch.css'
+import '../../sketch.css'
 
 function MyList(){
   

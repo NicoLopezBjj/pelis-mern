@@ -1,4 +1,5 @@
 const express = require('express')
+const path = require('path')
 require('dotenv').config()
 const mongoose = require('mongoose')
 const mongoStore = require("connect-mongo")
@@ -10,8 +11,12 @@ const passport = require('passport')
 const LocalStrategy = require ('passport-local').Strategy
 const local = require('./config/passport')
 const flash = require('connect-flash')
+const googleRoutes = require('./routes/googleRoutes')
+const google = require ('./config/google')
 
 const app = express()
+
+app.use(express.static("public"))
 
 // Configuracion de la session
 const SECRETSESSION = process.env.SECRETSESSION
@@ -19,7 +24,7 @@ app.use(expressSession({
     secret : SECRETSESSION,
     resave : false ,
     saveUninitialized : true,
-    cookie: { maxAge: 3 * 60 * 60 * 1000 }, // mantiene al usuario logeado por 1 hora
+    cookie: { maxAge: 3 * 60 * 60 * 1000 } , // mantiene al usuario logeado por 1 hora
     store: mongoStore.create({
         mongoUrl:process.env.DB_URL
     })
@@ -28,7 +33,13 @@ app.use(expressSession({
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
-app.use(cors()) // para conectar FRONT y BACK (diferentes puertos)
+// Configuracion de cors para conectar FRONT y BACK (diferentes puertos)
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    methods: "GET,POST,DELETE,PUT",
+    credentials: true // permitir cookies en el navegador
+}
+app.use(cors(corsOptions)) 
 
 // Configuracion passport
 local.inicio(passport)
@@ -53,4 +64,8 @@ const connectDataBase = async () => {
 
 connectDataBase()
 
+
+
+google.googleStrategy(passport)
 app.use(userRoutes,pelisRoutes)
+app.use('/auth', googleRoutes)

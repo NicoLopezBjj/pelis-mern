@@ -1,5 +1,5 @@
 const passport = require('passport')
-const LocalStrategy = require('passport-local')
+const LocalStrategy = require('passport-local').Strategy
 const User = require('../models/User')
 const bcrypt=require('bcrypt')
 
@@ -16,12 +16,11 @@ module.exports.inicio = async(passport)=>{
           return done(null, false, { message: 'Usuario no encontrado' });
         }
          const isPasswordValid = await bcrypt.compare(password, user.password);
-         console.log("isPasswordValid?",isPasswordValid)
         
         if (!isPasswordValid) {
           return done(null, false, { message: 'Contraseña incorrecta' });
         }else{
-          console.log(user)
+          //console.log(user)
            return done(null, user);
         }
   
@@ -32,12 +31,15 @@ module.exports.inicio = async(passport)=>{
   ));
   
   passport.serializeUser((user, done) => {
-    done(null, user.id);
+    console.log("serializado", user)
+    done(null, user._id);
   });
   
   passport.deserializeUser(async (id, done) => {
+    console.log("deserializado")
+    console.log(id)
     try {
-      const user = await User.findById(id);
+      const user = await User.findById({_id : id});
       done(null, user);
     } catch (error) {
       done(error);

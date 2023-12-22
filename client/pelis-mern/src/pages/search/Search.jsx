@@ -1,11 +1,11 @@
 import { Link, useSearchParams } from "react-router-dom"
 import axios from "axios"
 import {useState,useEffect,useContext} from "react"
-import { UserContext } from "./UserContext"
-import Header from "./Header"
+import { UserContext } from "../../UserContext"
+import Header from "../../components/Header"
 
 function Search(){
-    const {busqueda, setBusqueda, linkStyle} = useContext(UserContext)
+    const {busqueda, setBusqueda} = useContext(UserContext)
     const [next,setNext] = useState(null)
     const [resultados, setResultados] = useState([])
     const parse = JSON.parse(localStorage.getItem('query'));
@@ -45,7 +45,7 @@ function Search(){
                 <div className="d-flex flex-wrap text-danger">
                     {resultados.map(resultado => {
                     let movieLink = `/movie/${resultado.id}`
-                    return <Link to={movieLink} style={linkStyle}>
+                    return <Link to={movieLink} style={{textDecoration:"none"}}>
                             <div className="movie mx-2 mb-4 p-4">
                                 <img src={resultado.primaryImage == null ? "/tba.jpg" : resultado.primaryImage.url}></img>
                                 <p className="movie-title mb-2">{resultado.titleText.text.length<20 ? resultado.titleText.text : resultado.titleText.text.slice(0,15) + "..."}</p>

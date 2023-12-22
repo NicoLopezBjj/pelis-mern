@@ -1,60 +1,29 @@
-import axios from "axios";
 import { useEffect, useState, useContext } from "react";
-import { Link, useSearchParams } from "react-router-dom"
-import { UserContext } from "./UserContext";
-import "./sketch.css"
+import { Link } from "react-router-dom"
+import { UserContext } from "../../UserContext";
+import '../../sketch.css'
+import { llamaEstrenos,llamaTrailer } from "./logicaEstreno";
 
 function Estrenos(){
-
+    const [likes,setLikes] = useState([])
+    const [IdllaveTrailer,setIdLlaveTrailer] = useState(null)
+    const [llaveTrailer,setLlaveTrailer] = useState(false)
+    const [trailer,setTrailer] =useState("")
     const [estrenos,setEstrenos]=useState([])
     const [pagina,setPagina]=useState(1)
     const [colorButton,setColorButton]=useState("Action")
-    const {busqueda, setBusqueda, linkStyle} = useContext(UserContext)
+    const {busqueda, setBusqueda} = useContext(UserContext)
     const q = new URLSearchParams()
-
+    
     useEffect(()=>{
-        async function llamaEstrenos(){
-            const options = {
-                method:"GET",
-                url:`https://moviesdatabase.p.rapidapi.com/titles?page=${pagina}`,
-                params:{
-                    info:"base_info",
-                    list:"top_boxoffice_200",
-                    genre: colorButton,
-                    limit:15
-                },
-                headers: {
-                    'X-RapidAPI-Key': '67f656a5b7mshe2db331fbc1afbap1ac1d4jsn2028ca1c89f4',
-                    'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com'
-                }
-            }
+        if(llaveTrailer){
+            llamaTrailer(setTrailer,IdllaveTrailer)
+        }else{
+            llamaEstrenos(pagina,setEstrenos,colorButton)
+        }
+    },[pagina,colorButton,IdllaveTrailer])
 
-            try{
-                const data = await axios.request(options)
-            //    console.log("Data API:", data)
-               // console.log("Estrenos:", estrenos)
-
-                if (pagina > 1){
-                     setEstrenos(prevEstrenos => [...prevEstrenos, ...data.data.results]) //setEstrenos pasa del estado anterior del useState (prevEstrenos) a un nuevo estado que suma todos los valores del anterior más todos los valores del nuevo (con spread operator!)
-                }else{setEstrenos(data.data.results)
-                }
-            }catch(err){ console.error(err) }
-        } 
-        
-        llamaEstrenos()
-    },[pagina,colorButton])
-
-    //console.log("Estrenos:", estrenos)
-   // console.log("Página:", pagina)
-
-   /* let estrenosFiltrados = estrenos.filter((estreno)=>{
-        return estreno.titleText.text.toLowerCase().includes(busqueda.toLowerCase())
-    })
-
-    let estrenosFiltradosPorGenero = estrenosFiltrados.filter((estrenoFiltrado)=>{
-        return estrenoFiltrado.genres.genres[0].text === colorButton //filtra teniendo en cuenta el valor de colorButton
-    })*/
-
+    
     const verMas = (e) => {
         setPagina(pagina+1)
         if(pagina === 3){ //ojo con este número! es el número anterior a la última actualización de página (si hay cuatro páginas, acá es pagina === 3)
@@ -70,6 +39,33 @@ function Estrenos(){
         localStorage.setItem('query', JSON.stringify(busqueda));
         return query
     }
+
+    const handleHoverEstrenos = async (e)=>{
+            let index =e.target.dataset.id
+            if(index== ""){
+                index = null
+                setIdLlaveTrailer(index)
+            }else{
+                setIdLlaveTrailer(index)
+            }
+            setLlaveTrailer(true)
+    };
+
+    const handleUnhoverEstrenos = ()=>{
+        setIdLlaveTrailer(null)
+        setLlaveTrailer(false)
+        setTrailer("")
+    };
+
+    const meGusta = (event)=>{
+        let numero =event.target.dataset.id
+        if (!likes.includes(numero)) {
+            setLikes(prevLikes => [...prevLikes, numero]);
+        }else{
+            const nuevoArray = likes.filter(item => item !== numero);
+            setLikes(nuevoArray);
+        }
+    };
 
     return(
         <section className="p-5" id="search">
@@ -91,17 +87,37 @@ function Estrenos(){
                     estrenos.map((estreno,index)=>{ 
                         let movieLink = `/movie/${estreno.id}`
                         return (
-                            <Link to={movieLink} style={linkStyle}>
-                                <div className="movie mx-2 mb-4 p-4" key={estreno.id} >
+                            <Link to={movieLink} style={{textDecoration:"none"}}
+                                    data-id={estreno.id} 
+                                    onMouseEnter={handleHoverEstrenos}
+                                    onMouseLeave={handleUnhoverEstrenos}  
+                                >
+                            {IdllaveTrailer == estreno.id
+                                ?  
+                                <div className={IdllaveTrailer? 'styleTrailer' :"movie mx-2 mb-4 p-4"}>
+                                    <iframe src={trailer} allowfullscreen style={{width: '100%', height: '100%',alignSelf:"flex-start", alignItems:'flex-start',margin:'0%'}}></iframe>
+                                    <p className="movie-title mb-2 m-2">{estreno.titleText.text}</p>
+                                    <div className="d-flex justify-content-between p-2">
+                                        <div className="d-flex justify-content-between mr-5">
+                                            <p class="movie-description" style={{marginRight:'10px'}}>{estreno.releaseYear.year}  </p>
+                                            <p class="movie-description">{estreno.runtime.seconds/60} min</p>
+                                        </div>
+                                        <Link><i onClick={meGusta} data-id={estreno.id} class="fa-solid fa-heart"style={{color:likes.includes(estreno.id)? "red" : "white",marginRight:'20px'}}></i></Link>
+                                    </div>
+                                    <p class="movie-description m-0 p-2">{estreno.plot.plotText.plainText<30 ? estreno.plot.plotText.plainText : estreno.plot.plotText.plainText.slice(0,115) + "..."}</p>
+                                </div>  
+                                : 
+                                <div className="movie mx-2 mb-4 p-4" >       
                                     <img src={estreno.primaryImage.url} 
                                     alt="Movie IMG" 
                                     onError={(e)=> {e.target.onerror = null; e.target.src = "/couldnt_load.jpg"}} 
                                     className="mb-3"
-                                     />
+                                    />
                                     <p className="movie-title mb-2">{estreno.titleText.text.length<20 ? estreno.titleText.text : estreno.titleText.text.slice(0,15) + "..."}</p>
                                     <p class="movie-description m-0">{estreno.runtime.seconds/60} min | <span className="text-uppercase">{colorButton}</span></p>
                                 </div>
-                            </Link>
+                                 }
+                            </Link> 
                         )
                     })
                 : <h2 className="p-5 text-light">Lo sentimos, en este momento no hay nuevos estrenos.</h2>}

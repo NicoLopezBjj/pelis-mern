@@ -1,9 +1,9 @@
 import axios from "axios"
 import {useState, useEffect} from "react"
 import { useParams } from "react-router-dom"
-import Header from "./Header"
-import Footer from "./Footer"
-import "./sketch.css"
+import Header from "../../components/Header"
+import Footer from "../../components/Footer"
+import '../../sketch.css'
 
 function Movie(){
     const [movie,setMovie] = useState({})

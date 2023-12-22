@@ -1,5 +1,5 @@
 import {NavLink} from "react-router-dom"
-import './sketch.css'
+import '../sketch.css'
 
 function NavBar(){
 

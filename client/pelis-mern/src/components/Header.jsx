@@ -64,15 +64,36 @@ useEffect(() => {
              <NavBar></NavBar>
                 <a href="#search"><button class="btn-search"><i class="bi bi-search px-5"></i></button></a>
                 { user && profileName ?(
-                  <div className='dropdown'>
+                  <div className='dropdown signBtn'>
                     <button className='btn px-4 colorButton ms-2 dropdown-toggle' type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{profileName === null ? user.name : profileName}</button>
                     <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                       <Link to="/profiles" className="dropdown-item hoverModal">Profiles</Link>
                       <button onClick={LogOut} className="dropdown-item hoverModal" >Logout</button>
                      </div>
                   </div>
-                ) : ( <NavLink to="/signin"><button class="btn px-4 colorButton ms-2">Sign in</button></NavLink>
+                ) : ( <NavLink to="/signin"><button class="btn px-4 colorButton ms-2 signBtn">Sign in</button></NavLink>
                 )} 
+            </div>
+            <div className="burger">
+              <div class="dropdown">
+                <button class="btn colorButton dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="bi bi-list"></i>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <NavLink to="/" className="sacarEnlace hoverEnlace nav-link px-4 py-1">Home</NavLink>
+                  <NavLink to="/mylist" className="sacarEnlace hoverEnlace nav-link px-4 py-1">My List</NavLink>
+                  <NavLink to="/movies" className="sacarEnlace hoverEnlace nav-link px-4 py-1">Movies</NavLink>
+                  <NavLink to="/news" className="sacarEnlace hoverEnlace nav-link px-4 py-1">News</NavLink>
+                  <div class="dropdown-divider"></div>
+                  { user && profileName ?(
+                  <>
+                    <Link to="/profiles" className="dropdown-item hoverModal px-4">Profiles</Link>
+                    <button onClick={LogOut} className="dropdown-item hoverModal px-4" >Logout</button>
+                  </>
+                  ) : ( <NavLink to="/signin"><button class="px-4">Sign in</button></NavLink>
+                  )}
+                </div>
+            </div>
             </div>
         </header>
   

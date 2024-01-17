@@ -1,0 +1,68 @@
+/* RESPONSIVE 1 - Header, Hero y Footer */
+
+@media (max-width:992px){}
+
+@media (max-width:768px){
+    .logo{
+        width:6em;
+    }
+    .navbar-expand-lg .navbar-nav{
+        flex-direction:row;
+    }
+    .navbar-expand-lg .navbar-nav li{
+        font-size:0.8rem;
+    }
+    .btn-search, .hero-content .social-media, footer .nav-extra{
+        display:none;
+    }
+    .hero-slide{
+        bottom:2em;
+        right:5em;
+    }
+    .hero-description{
+        left:7em;
+    }
+    .hero-trailer{
+        right:8em;
+    }
+    .footer-content{
+        width:90%;
+    }
+    .copyright{
+        font-size:0.8rem;
+        top:2em;
+        right:22em;
+    }
+}
+
+@media (max-width:576px){
+    .logo{
+        width:6em;
+    }
+    .burger{
+        display:block;
+    }
+    .navbar, header .signBtn{
+        display:none;
+    }
+    .hero-content{
+        display:none;
+    }
+    .hero-description{
+        bottom:6em;
+        left:3em;
+    }
+    .hero-trailer{
+        display:none;
+    }
+    footer .logo{
+        margin-left:1em;
+    }
+    .footer-content .social-media i{
+        margin: 0 0.5em;
+        font-size:1.5rem;
+    }
+    .copyright{
+        right:7.3em;
+    }
+}

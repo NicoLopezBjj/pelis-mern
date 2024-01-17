@@ -187,6 +187,10 @@ p{
     width:9em;
 }
 
+.burger{
+    display:none;
+}
+
 .hero{
     height:85vh;
 }

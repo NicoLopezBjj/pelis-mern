@@ -1,5 +1,6 @@
 import {NavLink} from "react-router-dom"
 import '../sketch.css'
+import '../responsive1.css'
 
 function NavBar(){
 
@@ -11,12 +12,12 @@ function NavBar(){
   
   return (
     <>
-      <nav class="navbar navbar-expand-lg mx-6"> 
-          <ul class="navbar-nav">
+      <nav className="navbar navbar-expand-lg mx-6 nav-md"> 
+          <ul className="navbar-nav">
               <li className="nav-item mx-2"><NavLink to="/" className="sacarEnlace hoverEnlace nav-link px-4 text-light">Home</NavLink></li>
               <li className="nav-item mx-2"><NavLink to="/mylist" className="sacarEnlace hoverEnlace nav-link px-4 text-light">My List</NavLink></li>
-              <li className="nav-item mx-2"><NavLink to="/movies" className="sacarEnlace hoverEnlace nav-link px-4 text-light">Movies</NavLink></li>
-              <li className="nav-item mx-2"><NavLink to="/news" className="sacarEnlace hoverEnlace nav-link px-4 text-light">News</NavLink></li>
+              <li className="nav-item mx-2 nav-extra"><NavLink to="/movies" className="sacarEnlace hoverEnlace nav-link px-4 text-light">Movies</NavLink></li>
+              <li className="nav-item mx-2 nav-extra"><NavLink to="/news" className="sacarEnlace hoverEnlace nav-link px-4 text-light">News</NavLink></li>
           </ul>
       </nav>
     </>

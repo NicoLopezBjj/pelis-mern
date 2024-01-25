@@ -20,6 +20,8 @@ function Profiles(){
     useEffect(()=>{
         async function obtainProfiles(){
             const data = await axios.request({method:"GET",url:"https://pelis-mern-server-five.vercel.app/profiles",withCredentials:true})
+            .then(result => console.log(result))
+            .catch(error => console.log(error))
             console.log(data.data)
             setProfiles(data.data)
         }

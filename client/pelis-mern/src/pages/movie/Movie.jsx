@@ -52,7 +52,7 @@ function Movie(){
     }
     
     const sendToMyList = async () => {
-      const response = await axios.post("http://localhost:3001/lists/add-to-my-list",
+      const response = await axios.post("https://pelis-mern-server-five.vercel.app/lists/add-to-my-list",
       {
         id:user._id,
         profId:profileId,
@@ -62,7 +62,7 @@ function Movie(){
     }
 
     const deleteFromMyList = async() => {
-      const response = await axios.delete(`http://localhost:3001/lists/delete-from-my-list/${user._id}/${profileId}/${movie.id}`, {withCredentials:true})
+      const response = await axios.delete(`https://pelis-mern-server-five.vercel.app/lists/delete-from-my-list/${user._id}/${profileId}/${movie.id}`, {withCredentials:true})
       console.log(response)
     }
 

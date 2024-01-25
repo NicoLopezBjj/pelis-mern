@@ -21,7 +21,7 @@ function CreateProfile(){
       const userData = {name, image}
   
       
-      axios.post('http://localhost:3001/createProfile', userData, { withCredentials: true })
+      axios.post('https://pelis-mern-server-five.vercel.app/createProfile', userData, { withCredentials: true })
         .then(response => {
             if (response.data.mensaje == "el usuario ya exite"){
                 console.log("paso1")

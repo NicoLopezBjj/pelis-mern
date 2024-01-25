@@ -33,7 +33,7 @@ const SignUp = () => {
     const userData = { name, email, password }
 
     
-    axios.post('http://localhost:3001/signup', userData , { withCredentials: true })
+    axios.post('https://pelis-mern-server-five.vercel.app/signup', userData , { withCredentials: true })
       .then(response => { 
         if(response.data.message == 'Usuario creado exitosamente'){
           setLlav("exitoso") }

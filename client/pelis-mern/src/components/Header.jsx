@@ -34,7 +34,7 @@ useEffect(() => {
       return
     }
     try{
-    const response = await axios.get('http://localhost:3001/auth/google/user', { withCredentials: true });
+    const response = await axios.get('https://pelis-mern-server-five.vercel.app/auth/google/user', { withCredentials: true });
     if (response.data.user) {
       setUser(response.data.user);
       console.log('userGoogle front', response.data.user)
@@ -50,7 +50,7 @@ useEffect(() => {
 
   const LogOut = async () => {
     localStorage.removeItem('user')
-    const data = await axios.request({method:"GET",url:"http://localhost:3001/logout"})
+    const data = await axios.request({method:"GET",url:"https://pelis-mern-server-five.vercel.app/logout"})
     console.log('vengo de logout',data)
     setUser(false) //importante setear a user en falso así se borra el usuario en el front
     navigate("/signin")

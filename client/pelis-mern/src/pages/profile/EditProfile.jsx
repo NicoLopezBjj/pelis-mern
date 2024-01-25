@@ -25,7 +25,7 @@ function EditProfile(){
         if(subjectName === "" || subjectName === user.profiles[index].name){
             setError(true)
         }else{
-            await axios.post("http://localhost:3001/update-profile",{
+            await axios.post("https://pelis-mern-server-five.vercel.app/update-profile",{
                 id:user._id,
                 index:index,
                 name:subjectName,
@@ -36,7 +36,7 @@ function EditProfile(){
     }
 
     const update = async()=>{
-        await axios.post("http://localhost:3001/get-user",{
+        await axios.post("https://pelis-mern-server-five.vercel.app/get-user",{
                 id:user._id
         },{withCredentials:true})
         .then(response => setUser(response.data))
@@ -45,7 +45,7 @@ function EditProfile(){
 
     const deleteProfile = async(e) => {
         e.preventDefault()
-        await axios.delete("http://localhost:3001/delete-profile",{
+        await axios.delete("hhttps://pelis-mern-server-five.vercel.app/delete-profile",{
             id:user._id,
             profileId:id
         },{withCredentials:true})

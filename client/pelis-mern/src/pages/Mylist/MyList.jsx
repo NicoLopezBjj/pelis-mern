@@ -10,7 +10,7 @@ function MyList(){
   useEffect(()=>{
     async function getList(){
       try{
-        const response = await axios.post("http://localhost:3001/lists/get-my-list", {id:user._id, profId:profileId}, {withCredentials:true})
+        const response = await axios.post("https://pelis-mern-server-five.vercel.app/lists/get-my-list", {id:user._id, profId:profileId}, {withCredentials:true})
         console.log(response)
         if(response.data.list.length > 0){
           console.log("hay")

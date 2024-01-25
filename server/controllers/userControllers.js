@@ -65,7 +65,8 @@ const logout_get = async (req,res) => {
 const get_all_profiles = async (req,res) => {
   console.log("está req autenticado en profiles?", req.isAuthenticated())
   console.log(req.body.user)
-  let call = await User.findById({_id:req.body.user.id})
+  console.log(username)
+  let call = await User.findById({_id:username.id})
   let profiles = call.profiles
   res.json(profiles)
 }

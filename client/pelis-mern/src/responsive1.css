@@ -1,0 +1,95 @@
+/* RESPONSIVE 1 - Header, Hero, SignIn, SignUp y Footer */
+
+@media (max-width:992px){
+    .estrenos{
+        margin-bottom:4em;
+    }
+}
+
+@media (max-width:768px){
+    .logo{
+        width:6em;
+    }
+    .navbar-expand-lg .navbar-nav{
+        flex-direction:row;
+    }
+    .navbar-expand-lg .navbar-nav li{
+        font-size:0.8rem;
+    }
+    .btn-search, .hero-content .social-media, footer .nav-extra{
+        display:none;
+    }
+    .hero-slide{
+        bottom:2em;
+        right:5em;
+    }
+    .hero-description{
+        left:7em;
+    }
+    .hero-trailer{
+        right:8em;
+    }
+    .pelis, .proxPelis{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+    .footer-content{
+        width:80%;
+    }
+    .copyright{
+        font-size:0.8rem;
+        top:2em;
+        right:22em;
+    }
+}
+
+@media (max-width:576px){
+    .logo{
+        width:5.5em;
+    }
+    .burger{
+        display:block;
+    }
+    .navbar, header .signBtn{
+        display:none;
+    }
+    .hero-content{
+        display:none;
+    }
+    .hero-description{
+        bottom:6em;
+        left:3em;
+    }
+    .hero-trailer{
+        display:none;
+    }
+    .genres{
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+    }
+    .genres button{
+        font-size:1rem;
+        margin:0.5em;
+    }
+    footer .logo{
+        margin-left:1em;
+    }
+    .footer-content{
+        width:90%;
+    }
+    .footer-content .social-media i{
+        margin: 0 0.5em;
+        font-size:1.5rem;
+    }
+    .copyright{
+        right:7.3em;
+    }
+    .ancho{
+        width:20rem;
+    }
+    .sign-redirect{
+        font-size:0.9rem;
+    }
+}

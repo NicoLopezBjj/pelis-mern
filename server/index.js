@@ -34,7 +34,7 @@ app.use(express.urlencoded({extended:true}))
 
 // Configuracion de cors para conectar FRONT y BACK (diferentes puertos)
 const corsOptions = {
-    origin: 'http://localhost:3000',
+    origin: 'https://pelis-mern-client-nine.vercel.app',
     methods: "GET,POST,DELETE,PUT",
     credentials: true // permitir cookies en el navegador
 }

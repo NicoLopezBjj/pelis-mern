@@ -33,7 +33,7 @@ const SignUp = () => {
     const userData = { name, email, password }
 
     
-    axios.post('http://localhost:3001/signup', userData , { withCredentials: true })
+    axios.post('https://pelis-mern-server-five.vercel.app/signup', userData , { withCredentials: true })
       .then(response => { 
         if(response.data.message == 'Usuario creado exitosamente'){
           setLlav("exitoso") }
@@ -49,14 +49,14 @@ const SignUp = () => {
   }
 
   return (
-    <div className='d-flex flex-column align-items-center text-center justify-content-center w-100 textWhite'>
-        <div className='text-center p-2'>
+    <div className='d-flex flex-column align-items-center text-center justify-content-center w-100 text-light'>
+        <div className='text-center p-2' style={{margin:"2em 0"}}>
             <img src="logo.png" alt="Movies Hub" class="logo"/>
         </div>
         <div className='d-flex flex-column ancho justify-content-start'>
             <h2 className='text-start'>Registro</h2>
             {llav?<p>el usuario ya existe</p>:null}
-            <form onSubmit={enviarDatos}>
+            <form onSubmit={enviarDatos} style={{marginBottom:"1em"}}>
                 <div className='d-flex flex-column'>
                     <label className='p-2 text-start' htmlFor="email">Nombre de usuario:</label>
                     <input className='p-2 form-control' type="text" id="name"  value={name} onChange={datosName} required />
@@ -71,11 +71,11 @@ const SignUp = () => {
                 </div>
             <button className='btn colorButton ancho mt-2 p-2' type="submit">Continuar</button>
             </form>
-            <p class="align-self-start mt-2">Al continuar, aceptas las <a href="">Condiciones de uso</a> y el <a href="">Aviso de privacidad</a> de Movies Hub</p>
-            <div class="d-flex">
-              <a href='http://localhost:3001/auth/google' className='pe-2'><button className='btn colorButton p-2 btnRegistro'><i class="bi bi-google pe-1"></i>Registrese con Google</button></a>
-                <button className='btn colorButton p-2 btnRegistro'><i class="bi bi-instagram pe-1"></i>Registrese con Instagram</button>
-            </div>
+            <p className="align-self-start mb-3">Al continuar, aceptas las <a href="">Condiciones de uso</a> y el <a href="">Aviso de privacidad</a> de Movies Hub</p>
+            {/* <div class="sign-redirect d-flex">
+              <a href='http://localhost:3001/auth/google' className='pe-2'><button className='btn colorButton p-2 btnRegistro'><i class="bi bi-google pe-1"></i>Registrese con <b>Google</b></button></a>
+                <button className='btn colorButton p-2 btnRegistro'><i class="bi bi-twitter pe-1"></i>Registrese con <b>Instagram</b></button>
+            </div> */}
         </div>
       
     </div>

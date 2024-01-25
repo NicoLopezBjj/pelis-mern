@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import React from 'react';
 import '../../sketch.css'
+import '../../responsive1.css'
 import Header from '../../components/Header';
 
 const functionSlide = async(setSlide,slide)=>{

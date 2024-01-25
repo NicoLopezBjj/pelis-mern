@@ -64,7 +64,9 @@ const logout_get = async (req,res) => {
 
 const get_all_profiles = async (req,res) => {
   console.log("está req autenticado en profiles?", req.isAuthenticated())
-  let call = await User.findById({_id:req.user.id})
+  console.log(req.body.user)
+  console.log(username)
+  let call = await User.findById({_id:username.id})
   let profiles = call.profiles
   res.json(profiles)
 }
@@ -76,7 +78,7 @@ const create_profile = async(req,res) =>{
     if(req.isAuthenticated()){
       console.log("hay autenticado")
      //const match = await User.findOne({'profiles.name':name})
-      await req.user.crearPerfil(id, name,image)
+      await req.body.user.crearPerfil(id, name,image)
       return res.json({ mensaje: 'Perfil creado con éxito.'});
     }else{
       console.log("no hay autenticado")
@@ -96,7 +98,7 @@ const update_profile = async(req, res) => {
   const {id, index, name, image} = req.body
   try{
     if(req.isAuthenticated()){
-      await req.user.editarPerfil(id, index, name, image)
+      await req.body.user.editarPerfil(id, index, name, image)
       return res.json({message:"Perfil actualizado."})
     }
   }catch(err){

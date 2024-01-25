@@ -1,0 +1,22 @@
+/* ARCHIVOS QUE CUBRE EL RESPONSIVE ==> MOVIE.JSX */
+
+
+@media (max-width: 780px) {
+    .movie_image_responsive{
+        width: 100% !important;
+        height: auto !important;
+        margin: 0 auto;
+    }
+
+    .title_movie_responsive{
+        font-size: 4rem !important;
+    }
+}
+
+@media (max-width: 680px){
+    .title_movie_responsive{
+        font-size: 2.5rem !important;
+        width: 100% !important;
+        margin: 0 auto ;
+    }
+}

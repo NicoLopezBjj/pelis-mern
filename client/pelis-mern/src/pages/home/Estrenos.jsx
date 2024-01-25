@@ -68,21 +68,21 @@ function Estrenos(){
     };
 
     return(
-        <section className="p-5" id="search">
+        <section className="estrenos p-5" id="search">
             <div className="d-flex justify-content-between mb-5 position-relative">
                 <h4 className="text-uppercase text-light ms-4">Opening this week</h4>
                 <input type="text" className="estrenos-search me-4 ps-3 bg-transparent border border-1 border-light rounded rounded-2 text-light" placeholder="Search" value={busqueda} onChange={(e)=>{setBusqueda(e.target.value)}}/>
                 <button className="btn-search-absolute position-absolute" onClick={search} disabled={busqueda === "" ? "disabled" : ""}><Link to={`/search?query=${search()}`}><i className="btn-search-absolute bi bi-search px-5"></i></Link></button>
             </div>
             <hr />
-            <div class="pt-4 pb-5">
+            <div className="genres pt-4 pb-5">
                 <button className={colorButton === "Action" ? "btn px-4 btn-dark colorButton ms-2 text-light" : "btn px-4 btn-dark ms-2 text-light"} value="Action" onClick={(e)=>{setColorButton(e.target.value);setPagina(1)}}>Action</button>
                 <button className={colorButton === "Comedy" ? "btn px-4 btn-dark colorButton ms-2 text-light" : "btn px-4 btn-dark ms-2 text-light"} value="Comedy" onClick={(e)=>{setColorButton(e.target.value);setPagina(1)}}>Comedy</button>
                 <button className={colorButton === "Drama" ? "btn px-4 btn-dark colorButton ms-2 text-light" : "btn px-4 btn-dark ms-2 text-light"} value="Drama" onClick={(e)=>{setColorButton(e.target.value);setPagina(1)}}>Drama</button>
                 <button className={colorButton === "Adventure" ? "btn px-4 btn-dark colorButton ms-2 text-light" : "btn px-4 btn-dark ms-2 text-light"} value="Adventure" onClick={(e)=>{setColorButton(e.target.value);setPagina(1)}}>Adventure</button>
                 <button className={colorButton === "Animation" ? "btn px-4 btn-dark colorButton ms-2 text-light" : "btn px-4 btn-dark ms-2 text-light"} value="Animation" onClick={(e)=>{setColorButton(e.target.value);setPagina(1)}}>Animation</button>
             </div>
-            <div class="d-flex flex-wrap">
+            <div class="pelis d-flex flex-wrap">
                 { estrenos.length>0 ? 
                     estrenos.map((estreno,index)=>{ 
                         let movieLink = `/movie/${estreno.id}`

@@ -51,7 +51,7 @@ function ProxEstrenos(){
                 <h4 class="text-uppercase text-light ms-4">Coming soon</h4>
             </div>
             <hr />
-            <div class="d-flex flex-wrap">
+            <div class="proxPelis d-flex flex-wrap">
                 {proxEstrenos.map((proxEstreno)=>{
                     let movieLink = `/movie/${proxEstreno.id}`
                     return <Link to={movieLink} style={{textDecoration:"none"}}>

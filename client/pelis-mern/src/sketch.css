@@ -105,6 +105,11 @@ p{
     cursor:pointer;
 }
 
+.ancho i{
+    font-size:1rem;
+    margin-right:0.1em;
+}
+
 /* Pseudoclases */
 
 .hoverEnlace:hover{
@@ -132,7 +137,6 @@ p{
 .reverseColorButton:hover{
     background-color: var(--red) !important
 }
-
 
 .social-media i:hover{
     color:var(--red)
@@ -185,6 +189,10 @@ p{
 
 .logo{
     width:9em;
+}
+
+.burger{
+    display:none;
 }
 
 .hero{
@@ -328,10 +336,6 @@ p{
 
 .maxIcon{
     font-size: x-large;
-}
-
-.textWhite{
-    color: white !important;
 }
 
 .ancho{

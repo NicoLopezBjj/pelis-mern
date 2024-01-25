@@ -25,7 +25,7 @@ const [list, setList] = useState([])
 
   useEffect(()=>{ //useEffect para el llamado de la API
       async function llamadoHero(){
-        axios.get('http://localhost:3001/',{ withCredentials: true })
+        axios.get('https://pelis-mern-server-five.vercel.app/',{ withCredentials: true })
         .then(response => setDataSlide(response.data.arraySlide))
         .catch(error => console.error('Error al obtener datos:', error));
         }llamadoHero();

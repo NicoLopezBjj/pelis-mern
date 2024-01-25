@@ -1,5 +1,5 @@
 {
-  "proxy":"http://localhost:3001/",
+  "proxy":"https://pelis-mern-server-five.vercel.app/",
   "name": "pelis-mern",
   "version": "0.1.0",
   "private": true,

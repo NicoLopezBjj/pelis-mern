@@ -8,4 +8,8 @@
         "Access-Control-Allow-Credentials": "true",
         "Access-Control-Allow-Origin": "https://pelis-mern-client-nine.vercel.app"
     }}]
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> de69d83692e2f02c68db626c27d1bbfc913b6f64
